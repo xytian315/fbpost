@@ -19,7 +19,7 @@
       <nav>
       <ul class="nav pull-right">
         <li><%= link_to "Home", '#' %></li> 
-        <li><%= link_to "Help", '#' %></li> 
+        <li><%= link_to "Account", '/image/new' %></li> 
         <% if current_user %>
             <li><%= link_to "Sign out", signout_path, id: "sign_out" %><li>
           <% else %>
@@ -38,24 +38,16 @@
         <div id="user_nav" class="nav">
           <% if current_user %>
             <p>Hello, <strong><%= current_user.name %></strong>!</p>
-             <% if current_image.image.nil? %>
-              <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large" %>
+             <% if current_image.nil? %>
+              <%= image_tag "http://graph.facebook.com/#{current_user.uid}/picture?type=large", :size => "260x180" %>
               <% else %>
-              <%= image_tag current_image.image.url %>
+              <%= image_tag current_image.image.url, :size => "260x180"%>
             <% end %>
-          <% else %>
-            <%= link_to "Sign in with Facebook", "/auth/facebook" %>
           <% end %>
           </div>
-
-  <a data-toggle="modal" href="/image/new" class="btn btn-primary btn-large">Upload your profile image</a>
- 
-         
-
       </div>
 
       <div class="span8">
-
         <%= yield %>
       </div>
     </div>

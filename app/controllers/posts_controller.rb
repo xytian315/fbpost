@@ -14,13 +14,10 @@ class PostsController < ApplicationController
 end
 
   def create
-
     @post = current_user.posts.create!(params[:post])
-
     respond_to do |format|
       if @post.save
         format.html {redirect_to root_url, notice: "Congratulations! Your content was successfully posting on facebook!" }
-    
         current_user.facebook.put_wall_post(@post.content)
 
       else
