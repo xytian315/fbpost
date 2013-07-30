@@ -1,0 +1,22 @@
+<h1>Please upload your profile picture here</h1>
+
+  <a data-toggle="modal" href="#myImage" class="btn btn-primary btn-large">Upload your profile image</a>
+  
+  <!-- Modal for image -->
+
+   <div class="modal fade" id="myImage">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       <%= form_for :image, :url => {:action => 'create'}, :html => {:multipart => true} do |f| %>
+        <div class= "modal-body"> 
+        <%= f.file_field :image %>
+        </div>
+        <div class="modal-footer">
+            <a class='btn' class="close" data-dismiss="modal">Close</a>
+        <%= f.submit "Upload" %>
+        </div>
+        <% end %>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
